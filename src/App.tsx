@@ -5,6 +5,10 @@ import { DifficultyButton } from './components/DifficultyButton';
 import { GameControls } from './components/GameControls';
 import { BestScores } from './components/BestScores';
 import { GameCompleted } from './components/GameCompleted';
+import flipSound from "./public/sounds/flipcard.mp3";
+import matchSound from "./public/sounds/correct.mp3";
+import wrongSound from "./public/sounds/wrong-answer.mp3";
+import victorySound from "./public/sounds/goodresult.mp3";
 
 interface Card {
   id: number;
@@ -75,13 +79,6 @@ const icons = [
   { name: 'Node', component: NodeJs },
 ];
 
-// const SOUNDS = {
-//   flip: '/sounds/flipcard.mp3',
-//   match: '/sounds/correct.mp3',
-//   wrong: '/sounds/wrong-answer.mp3',
-//   victory: '/sounds/goodresult.mp3'
-// };
-
 function App() {
   const [difficulty, setDifficulty] = useState<Difficulty>('medium');
   const [cards, setCards] = useState<Card[]>([]);
@@ -98,12 +95,10 @@ function App() {
     hard: 0
   });
 
-  // const soundOn = (sound: string) => {
-  //   const audio = new Audio(sound);
-  //   audio.volume = 0.5;
-  //   audio.loop = true;
-  //   audio.play();
-  // }
+  const soundOn = (sound: string) => {
+    const audio = new Audio(sound);
+    audio.play();
+  }
 
   const initializeGame = (newDifficulty?: Difficulty) => {
     const currentDifficulty = newDifficulty || difficulty;
@@ -163,7 +158,7 @@ function App() {
       return;
     }
 
-    // soundOn(SOUNDS.flip);
+    soundOn(flipSound);
 
     const newCards = [...cards];
     newCards[index].isFlipped = true;
@@ -183,7 +178,7 @@ function App() {
         const matchScore = 10 * DIFFICULTY_CONFIG[difficulty].scoreMultiplier;
         setScore((prev) => prev + matchScore);
         setFlippedCards([]);
-        // soundOn(SOUNDS.match);
+        soundOn(matchSound);
 
         if (newCards.every((card) => card.isMatched)) {
           const finalScore = score + matchScore;
@@ -195,7 +190,7 @@ function App() {
             }));
           }
           setTimeout(() => {
-            // soundOn(SOUNDS.victory);
+            soundOn(victorySound);
           }, 500);
         }
       } else {
@@ -204,7 +199,7 @@ function App() {
           newCards[secondIndex].isFlipped = false;
           setCards(newCards);
           setFlippedCards([]);
-          // soundOn(SOUNDS.wrong);
+          soundOn(wrongSound);
         }, 1000);
       }
     }
