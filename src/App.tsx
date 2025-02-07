@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'react';
+
 import { Facebook, Twitter, Github, Linkedin, Apple, Figma, Youtube, WholeWord as Wordpress, Pocket as Docker, AppWindow as Windows, Palette as Paypal, Disc as Discord, Cuboid as Android, MessageCircle, Pointer as Pinterest, RepeatIcon as ReactIcon, Code as NodeJs, Timer, Trophy, RotateCcw, Gamepad2, Menu } from 'lucide-react';
+
 import { Card } from './components/Card';
 import { DifficultyButton } from './components/DifficultyButton';
 import { GameControls } from './components/GameControls';
 import { BestScores } from './components/BestScores';
 import { GameCompleted } from './components/GameCompleted';
+
 import flipSound from "./public/sounds/flipcard.mp3";
 import matchSound from "./public/sounds/correct.mp3";
 import wrongSound from "./public/sounds/wrong-answer.mp3";
 import victorySound from "./public/sounds/goodresult.mp3";
+
 
 interface Card {
   id: number;

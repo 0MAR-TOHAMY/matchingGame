@@ -19,15 +19,15 @@ export const Card = ({ id, icon, isFlipped, isMatched, onClick }: CardProps) => 
         <div
         className={`w-full h-full flex items-center justify-center rounded-lg border transition-all duration-300 ${
         isFlipped
-            ? 'bg-white border-blue-600'
+            ? 'bg-white border-blue-600 *:rotate-y-180'
             : 'bg-blue-600 border-blue-600'
         } ${
         isMatched
             ? 'bg-green-100 border-green-600'
             : ''
         }`}
-    >
-        {isFlipped && icon}
+        >
+            {isFlipped && icon}
         </div>
     </div>
 );
