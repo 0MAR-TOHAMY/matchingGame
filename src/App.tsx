@@ -80,7 +80,7 @@ const icons = [
 ];
 
 function App() {
-  const [difficulty, setDifficulty] = useState<Difficulty>('medium');
+  const [difficulty, setDifficulty] = useState<Difficulty>('easy');
   const [cards, setCards] = useState<Card[]>([]);
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
   const [moves, setMoves] = useState(0);
@@ -240,7 +240,7 @@ function App() {
             </div>
             <button
               onClick={() => initializeGame()}
-              className="flex items-center justify-center gap-2 px-3 py-1.5 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors w-full text-sm"
+              className="flex items-center justify-center gap-2 px-3 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors w-full text-sm"
             >
               <RotateCcw className="w-3 h-3" />
               Restart
